@@ -2,6 +2,35 @@ html { font-family: Arial;
      background-color: #f4f6f9;
      height: 100%;
   }
-  background: 50% 50% no-repeat
-    url('data:image/svg+xml,<svg viewBox="-20 -5 60 40" width="140" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M1 8l11-7 11 7v8l-11 7-11-7zm0 0l11 8 11-8m0 8L12 8 1 16M12 1v7m0 8v7" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><text x="-12" y="32" font-size="5" font-family="monospace" fill="currentColor">Built on CodePen</text></svg>');
+h1   { 
+     color: #1f3a5f;
+  }
+h2   {
+     color:#52677d;
+  }
+section { 
+     padding: 20px; 
+     background-color: #FFFFFF;
+     border-radius: 1px;
+     border: 1px solid #dfe3e8;
+     margin-bottom: 16px;
+  }
+select {
+     font-size: 16px;
+     padding: 6px;
+     border: 1px solid #dfe3e8;
+     border-radius: 8px;
+}
+#total-deposits {
+     color: #1f3a5f;
+}
+#total-withdrawals {
+     color: #1f3a5f;
+}
+#net-transaction-activity {
+     color: #1f3a5f;
+}
+body {
+     background: 50% 50% no-repeat
+     url('data:image/svg+xml,<svg viewBox="-20 -5 60 40" width="140" xmlns="http://www.w3.org/2000/svg" opacity="0.2"><path d="M1 8l11-7 11 7v8l-11 7-11-7zm0 0l11 8 11-8m0 8L12 8 1 16M12 1v7m0 8v7" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"/><text x="-12" y="32" font-size="5" font-family="monospace" fill="currentColor">Built on CodePen</text></svg>');
 }
