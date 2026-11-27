@@ -52,6 +52,7 @@ if (transactionType === "Deposit") {
   transactionCategory: transactionCategory
   });
 }
+
 for ( let i = 200; i < 300; i++) { 
 let transactionType = "";
 let amount = 0;
@@ -77,12 +78,17 @@ if (transactionType === "Deposit") {
   transactionCategory: transactionCategory
   });
 }
+
 let totalDeposits = 0; 
 let totalWithdrawals = 0;
 
 for (let i = 0; i < transactions.length; i++) { 
-  if (transactions[ i ].transactionType === "Deposit") { totalDeposits += transactions[ i ].amount; }
+  if (transactions[i].transactionType === "Deposit") { 
+  totalDeposits += transactions[ i ].amount; }
  }
+
 for (let i = 0; i < transactions.length; i++) { 
   if (transactions[ i ].transactionType === "Withdrawal") { totalWithdrawals += transactions[ i ].amount; }
  }
+
+const netTransactionActivity = totalDeposits - totalWithdrawals;
