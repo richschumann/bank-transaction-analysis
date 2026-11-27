@@ -92,3 +92,15 @@ for (let i = 0; i < transactions.length; i++) {
  }
 
 const netTransactionActivity = totalDeposits - totalWithdrawals;
+
+const totalDepositsElement = document.getElementById("total-deposits");
+
+const totalWithdrawalsElement = document.getElementById("total-withdrawals");
+
+const netTransactionActivityElement = document.getElementById("net-transaction-activity");
+
+totalDepositsElement.textContent = totalDeposits;
+
+totalWithdrawalsElement.textContent = totalWithdrawals;
+
+netTransactionActivityElement.textContent = netTransactionActivity;
