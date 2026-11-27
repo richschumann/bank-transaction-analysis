@@ -77,3 +77,8 @@ if (transactionType === "Deposit") {
   transactionCategory: transactionCategory
   });
 }
+let totalDeposits = 0; 
+
+for (let i = 0; i < transactions.length; i++) { 
+  if (transactions[ i ].transactionType === "Deposit") { totalDeposits += transactions[ i ].amount; }
+ }
