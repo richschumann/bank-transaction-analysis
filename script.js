@@ -99,8 +99,8 @@ const totalWithdrawalsElement = document.getElementById("total-withdrawals");
 
 const netTransactionActivityElement = document.getElementById("net-transaction-activity");
 
-totalDepositsElement.textContent = totalDeposits;
+totalDepositsElement.textContent = totalDeposits.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
-totalWithdrawalsElement.textContent = totalWithdrawals;
+totalWithdrawalsElement.textContent = totalWithdrawals.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
-netTransactionActivityElement.textContent = netTransactionActivity;
+netTransactionActivityElement.textContent = netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD" });
