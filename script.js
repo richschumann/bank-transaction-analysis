@@ -38,7 +38,7 @@ if (i % 2 === 0) {
   transactionType = "Withdrawal"; }
 
 if (transactionType === "Deposit") {
-  amount = 500 + ( i % 20 ) * 500;
+  amount = 500 + ( i % 20 ) * 500 + 2000;
 } else {
   amount = 100 + ( i % 50 ) * 100;
 }
@@ -64,7 +64,7 @@ if (i % 2 === 0) {
   transactionType = "Withdrawal"; }
 
 if (transactionType === "Deposit") {
-  amount = 500 + ( i % 20 ) * 500;
+  amount = 500 + ( i % 20 ) * 500 + 4000;
 } else {
   amount = 100 + ( i % 50 ) * 100;
 }
@@ -81,36 +81,40 @@ if (transactionType === "Deposit") {
 
 const branchSelect = document.getElementById("branch-select");
 
+const totalDepositsElement = document.getElementById("total-deposits");
+const totalWithdrawalsElement = document.getElementById("total-withdrawals");
+const netTransactionActivityElement = document.getElementById("net-transaction-activity");
+
 const selectedBranch = branchSelect.value;
+
+function filterTransactions(selectedBranch) {
 
 const branchTransactions = transactions.filter(function(transaction) {
   return transaction.branchName === selectedBranch;
-});
-
-let totalDeposits = 0; 
-let totalWithdrawals = 0;
-
+});   
+  
+let totalDeposits = 0;
+  
 for (let i = 0; i < branchTransactions.length; i++) { 
   if (branchTransactions[i].transactionType === "Deposit") { 
-  totalDeposits += branchTransactions[ i ].amount; }
- }
+  totalDeposits += branchTransactions[ i ].amount; 
+  } 
+}
+  let totalWithdrawals = 0;
 
 for (let i = 0; i < branchTransactions.length; i++) { 
-  if (branchTransactions[ i ].transactionType === "Withdrawal") { totalWithdrawals += branchTransactions[ i ].amount; }
- }
-
+  if (branchTransactions[ i ].transactionType === "Withdrawal") { totalWithdrawals += branchTransactions[ i ].amount; 
+ } 
+}
 const netTransactionActivity = totalDeposits - totalWithdrawals;
 
-const totalDepositsElement = document.getElementById("total-deposits");
-
-const totalWithdrawalsElement = document.getElementById("total-withdrawals");
-
-const netTransactionActivityElement = document.getElementById("net-transaction-activity");
-
 totalDepositsElement.textContent = totalDeposits.toLocaleString("en-US", { style: "currency", currency: "USD" });
-
 totalWithdrawalsElement.textContent = totalWithdrawals.toLocaleString("en-US", { style: "currency", currency: "USD" });
 
-netTransactionActivityElement.textContent = netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD" });
-
-console.log(branchTransactions.length);
+netTransactionActivityElement.textContent = netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD" }); 
+}
+branchSelect.addEventListener("change", function(event) { 
+  let selectedBranch = branchSelect.value;
+  filterTransactions(selectedBranch);
+});
+filterTransactions(selectedBranch);
