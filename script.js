@@ -52,3 +52,28 @@ if (transactionType === "Deposit") {
   transactionCategory: transactionCategory
   });
 }
+for ( let i = 200; i < 300; i++) { 
+let transactionType = "";
+let amount = 0;
+const transactionCategory = transactionCategories[i % 4];
+  
+if (i % 2 === 0) {
+  transactionType = "Deposit";
+} else { 
+  transactionType = "Withdrawal"; }
+
+if (transactionType === "Deposit") {
+  amount = 500 + ( i % 20 ) * 500;
+} else {
+  amount = 100 + ( i % 50 ) * 100;
+}
+  
+ transactions.push( {
+  date: `2026-${String(transactionMonths[i % 14]).padStart(2, "0")}-15`,
+  transactionId: `TXN-${String(i + 1).padStart(3, "0")}`,
+  branchName: "Central Branch",
+  amount: amount,
+  transactionType: transactionType,
+  transactionCategory: transactionCategory
+  });
+}
