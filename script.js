@@ -78,7 +78,11 @@ if (transactionType === "Deposit") {
   });
 }
 let totalDeposits = 0; 
+let totalWithdrawals = 0;
 
 for (let i = 0; i < transactions.length; i++) { 
   if (transactions[ i ].transactionType === "Deposit") { totalDeposits += transactions[ i ].amount; }
+ }
+for (let i = 0; i < transactions.length; i++) { 
+  if (transactions[ i ].transactionType === "Withdrawal") { totalWithdrawals += transactions[ i ].amount; }
  }
