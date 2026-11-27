@@ -1,44 +1,30 @@
-const branchData = [
-  {
-    branch: "Columbus Main",
-    month: "January",
-    deposits: 450000,
-    withdrawals: 320000,
-    transactions: 1250
-  },
-  {
-    branch: "Dublin",
-    month: "January",
-    deposits: 380000,
-    withdrawals: 290000,
-    transactions: 980
-  },
-  {
-    branch: "Westerville",
-    month: "January",
-    deposits: 520000,
-    withdrawals: 410000,
-    transactions: 1420
-  },
-  {
-    branch: "Columbus Main",
-    month: "February",
-    deposits: 480000,
-    withdrawals: 350000,
-    transactions: 1310
-  },
-  {
-    branch: "Dublin",
-    month: "February",
-    deposits: 400000,
-    withdrawals: 310000,
-    transactions: 1020
-  },
-  {
-    branch: "Westerville",
-    month: "February",
-    deposits: 550000,
-    withdrawals: 420000,
-    transactions: 1490
-  }
-];
+const transactions = [ ];
+const transactionCategories = [ "Personal banking", "Business banking", "Utilities", "Retail" ];
+const transactionMonths = [1, 2, 3, 4, 1, 5, 6, 1, 7, 8, 9, 10, 11, 12];
+
+for ( let i = 0; i < 100; i++) { 
+let transactionType = "";
+let amount = 0;
+const transactionCategory = transactionCategories[i % 4];
+  
+if (i % 2 === 0) {
+  transactionType = "Deposit";
+} else { 
+  transactionType = "Withdrawal"; }
+
+if (transactionType === "Deposit") {
+  amount = 500 + ( i % 20 ) * 500;
+} else {
+  amount = 100 + ( i % 50 ) * 100;
+}
+  
+ transactions.push( {
+  date: `2026-${String(transactionMonths[i % 14]).padStart(2, "0")}-15`,
+  transactionId: `TXN-${String(i + 1).padStart(3, "0")}`,
+  branchName: "North Branch",
+  amount: amount,
+  transactionType: transactionType,
+  transactionCategory: transactionCategory
+  });
+}
+console.log(transactions);
