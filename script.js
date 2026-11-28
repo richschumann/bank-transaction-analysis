@@ -84,7 +84,7 @@ const branchSelect = document.getElementById("branch-select");
 const totalDepositsElement = document.getElementById("total-deposits");
 const totalWithdrawalsElement = document.getElementById("total-withdrawals");
 const netTransactionActivityElement = document.getElementById("net-transaction-activity");
-
+const reportingMessage = document.getElementById("report-message");
 const selectedBranch = branchSelect.value;
 
 function filterTransactions(selectedBranch) {
@@ -92,7 +92,11 @@ function filterTransactions(selectedBranch) {
 const branchTransactions = transactions.filter(function(transaction) {
   return transaction.branchName === selectedBranch;
 });   
-  
+ if (branchTransactions.length === 0) {
+ reportingMessage.textContent = "No transactions found"; 
+   return;
+ }
+reportingMessage.textContent = ""
 let totalDeposits = 0;
   
 for (let i = 0; i < branchTransactions.length; i++) { 
@@ -110,14 +114,14 @@ const netTransactionActivity = totalDeposits - totalWithdrawals;
 
 totalDepositsElement.textContent = totalDeposits.toLocaleString("en-US", { style: "currency", currency: "USD" });
 totalWithdrawalsElement.textContent = totalWithdrawals.toLocaleString("en-US", { style: "currency", currency: "USD" });
-
-netTransactionActivityElement.textContent = netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD" }); 
+netTransactionActivityElement.textContent = netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD" });
 }
 branchSelect.addEventListener("change", function(event) { 
   let selectedBranch = branchSelect.value;
   filterTransactions(selectedBranch);
 });
 filterTransactions(selectedBranch);
+  
 const branchNames = [ "North Branch", "South Branch", "Central Branch" ];
 const branchRankings = [];
 
@@ -146,5 +150,5 @@ const branchRankingsElement = document.getElementById("branch-rankings");
 
 for (let i = 0; i < branchRankings.length; i++) {
   const rankingItem = document.createElement("li");                                               
-rankingItem.textContent = branchRankings[i].branchName  + " - " + branchRankings[i].netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD"});          branchRankingsElement.appendChild(rankingItem); 
+rankingItem.textContent = branchRankings[i].branchName  + " - " + branchRankings[i].netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD"});    branchRankingsElement.appendChild(rankingItem); 
 }
