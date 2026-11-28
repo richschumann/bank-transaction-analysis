@@ -118,3 +118,33 @@ branchSelect.addEventListener("change", function(event) {
   filterTransactions(selectedBranch);
 });
 filterTransactions(selectedBranch);
+const branchNames = [ "North Branch", "South Branch", "Central Branch" ];
+const branchRankings = [];
+
+for (let i = 0; i < branchNames.length; i++) { let netTransactionActivity = 0;
+  const currentBranch = branchNames[i];
+const branchTransactions = transactions.filter(function(transaction) {
+  return transaction.branchName === currentBranch;
+  });
+let totalDeposits = 0;
+let totalWithdrawals = 0;
+                                               
+for (let j = 0; j < branchTransactions.length; j++) {
+  if (branchTransactions[j].transactionType === "Deposit") { totalDeposits += branchTransactions[j].amount;}
+  if (branchTransactions[j].transactionType === "Withdrawal") { totalWithdrawals += branchTransactions[j].amount;}
+}
+netTransactionActivity = totalDeposits - totalWithdrawals;
+                                               
+branchRankings.push({ branchName: currentBranch, netTransactionActivity: netTransactionActivity
+  });
+}
+branchRankings.sort(function(a, b) {            
+  return b.netTransactionActivity - a.netTransactionActivity;
+  });
+
+const branchRankingsElement = document.getElementById("branch-rankings");
+
+for (let i = 0; i < branchRankings.length; i++) {
+  const rankingItem = document.createElement("li");                                               
+rankingItem.textContent = branchRankings[i].branchName  + " - " + branchRankings[i].netTransactionActivity.toLocaleString("en-US", { style: "currency", currency: "USD"});          branchRankingsElement.appendChild(rankingItem); 
+}
